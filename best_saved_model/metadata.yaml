@@ -1,0 +1,19 @@
+description: Ultralytics YOLOv8n-cls model trained on /content/drive/MyDrive/PlagasYolo/dataset
+author: Ultralytics
+date: '2024-04-26T23:29:24.841127'
+version: 8.2.3
+license: AGPL-3.0 License (https://ultralytics.com/license)
+docs: https://docs.ultralytics.com
+stride: 1
+task: classify
+batch: 1
+imgsz:
+- 640
+- 640
+names:
+  0: Minador
+  1: MoscaBlanca
+  2: Oidio
+  3: Pulgon
+  4: Sana
+  5: roya
