@@ -3,6 +3,16 @@ from PIL import Image
 import numpy as np
 from flask import Flask, request, jsonify
 import io
+import os
+from dotenv import load_dotenv
+from flask_cors import CORS
+
+load_dotenv()
+app=Flask(__name__)
+CORS(app)
+
+app.config['DEBUG'] = os.environ.get('FLASK_DEBUG')
+
 
 # Initialize our Flask application and the TensorFlow model
 app = Flask(__name__)
@@ -10,6 +20,14 @@ model = tf.saved_model.load('best_saved_model')  # Carga el modelo SavedModel
 
 # Carga de nombres de clases y otras configuraciones
 class_names = {0: 'Minador', 1: 'MoscaBlanca', 2: 'Oidio', 3: 'Pulgon', 4: 'sana', 5: 'roya'}
+
+@app.route('/')
+def hello():
+    return "Hello World!"
+
+@app.route('/', methods=['GET'])
+def get():
+    return jsonify({'error': 'no tiene GET'})
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -47,4 +65,4 @@ def predict():
 
 # Run the Flask app
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0', port=10000)
+    app.run()
